@@ -1,0 +1,6 @@
+config.json
+.settings
+build/
+bin/
+.project
+.classpath
