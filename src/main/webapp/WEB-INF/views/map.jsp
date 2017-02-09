@@ -9,20 +9,21 @@
     </style>
   </head>
   <body>
-    <h3>My Google Maps Demo</h3>
+    <h3>Locator</h3>
     <div id="map"></div>
     <script>
+    /*<![CDATA[*/
       function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
-          center: uluru
+          center: new google.maps.LatLng("${latitude}", "${longtitude}"),
         });
         var marker = new google.maps.Marker({
-          position: uluru,
+          position: new google.maps.LatLng("${latitude}", "${longtitude}"),
           map: map
         });
       }
+      /*]]>*/
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=${api_key}&callback=initMap">
