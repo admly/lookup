@@ -17,16 +17,16 @@ import lookup.domain.IpLookupJson;
 
 @Service
 public class IpLookupJsonService {
-	public String GetJson() throws MalformedURLException, IOException{
+	public IpLookupJson GetJson() throws MalformedURLException, IOException{
 		String url = "http://freegeoip.net/json/";
 		String charset = java.nio.charset.StandardCharsets.UTF_8.name();
-		String param1 = "195.26.76.94";
+//		String param1 = request.getRemoteAddr().replaceAll(":", "."); // this should be uncommented in production environment instead of that line under
+		String param1 = "62.181.220.227"; //hardcoded for a test purposes
 		String query = String.format(URLEncoder.encode(param1, charset));
 		URLConnection connection = new URL(url + query).openConnection();
 		InputStream response = connection.getInputStream();
 		Reader reader = new InputStreamReader(response, charset);
 		IpLookupJson result  = new Gson().fromJson(reader, IpLookupJson.class);
-		String ipAdress = result.getIp();
-		return ipAdress;
+		return result;
 	}
 }
